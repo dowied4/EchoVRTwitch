@@ -133,7 +133,6 @@ export default class App extends React.Component{
                                     renderOrange: false,
                                     renderScore: false
                                 })}
-                                onMouseLeave={() => this.setState({renderBlue: false})}
                             />
                         </div>
                     </div>
