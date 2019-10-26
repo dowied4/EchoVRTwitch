@@ -10,7 +10,9 @@ class PlayerLabel extends Component {
 			return (
 				<Label
 					color={this.props.color}
-					onMouseEnter={() => this.props.onMouseEnter(this.props.player)}
+					onMouseMove={(e) => this.props.onMouseMove(e)}
+					onMouseEnter={(e) => this.props.onMouseEnter(this.props.player, e)}
+					onMouseLeave={() => this.props.onMouseLeave()}
 				>
 					{this.props.player.name}
 				</Label>

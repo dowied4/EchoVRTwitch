@@ -108,8 +108,8 @@ export default class App extends React.Component{
             return (
                 <div className="App">
                     {this.state.renderScore ? <Scoreboard matchData={this.state.matchData}/> : null}
-                    {this.state.renderOrange? <TeamBox mouseLeave={() => {console.log("left"); this.setState({renderOrange: false})}} teamData={this.state.matchData.teams[0].team === "ORANGE TEAM" ? this.state.matchData.teams[0] : this.state.matchData.teams[1]}/> : null}
-                    {this.state.renderBlue ? <TeamBox mouseLeave={() => {console.log("left"); this.setState({renderBlue: false})}} teamData={this.state.matchData.teams[0].team === "BLUE TEAM" ? this.state.matchData.teams[0] : this.state.matchData.teams[1]}/> : null}
+                    {this.state.renderOrange? <TeamBox mouseLeave={() => {this.setState({renderOrange: false})}} teamData={this.state.matchData.teams[0].team === "ORANGE TEAM" ? this.state.matchData.teams[0] : this.state.matchData.teams[1]}/> : null}
+                    {this.state.renderBlue ? <TeamBox mouseLeave={() => {this.setState({renderBlue: false})}} teamData={this.state.matchData.teams[0].team === "BLUE TEAM" ? this.state.matchData.teams[0] : this.state.matchData.teams[1]}/> : null}
                     <div className={this.state.theme === 'light' ? 'App-light' : 'App-dark'} >
                         <div className="row">
                             <div className="orange-team"
