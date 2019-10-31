@@ -36,15 +36,14 @@ class TeamBox extends Component {
 							textAlign='left'
 							style={{height: "150px",width: "15%", marginBottom: "25px", marginLeft: "22%", position: "relative"}}
 						>
-							
 							{this.props.teamData.players.map((player, index) => (
 								<Grid.Row style={{marginBottom: "20px"}}>
 									<PlayerLabel
 										color={"orange"}
 										player={player}
 										key={index}
-										onMouseMove={(e) => {this.setState({mouse:{mouseX: e.screenX, mouseY: e.screenY}})}}
-										onMouseEnter={(player, e) => {this.setState({renderPlayer: true, playerInfo: player, mouse: {mouseX: e.screenX, mouseY: e.screenY}})}}
+										onMouseMove={(e) => {this.setState({mouse:{mouseX: e.pageX, mouseY: e.pageY}})}}
+										onMouseEnter={(player, e) => {this.setState({renderPlayer: true, playerInfo: player, mouse: {mouseX: e.pageX, mouseY: e.pageY}})}}
 										onMouseLeave={() => this.setState({renderPlayer:false})}
 									/>
 								</Grid.Row>
@@ -62,13 +61,13 @@ class TeamBox extends Component {
 					style={{height: "150px",width: "15%", marginBottom: "25px", marginLeft: "65%", position: "relative"}}
 				>
 					{this.props.teamData.players.map((player, index) => (
-						<Grid.Row style={{marginBottom: "20px"}}>
+						<Grid.Row style={{marginBottom: "20px", zIndex: -1}}>
 							<PlayerLabel
 								color={"blue"}
 								player={player}
 								key={index}
-								onMouseMove={(e) => {this.setState({mouse:{mouseX: e.screenX, mouseY: e.screenY}})}}
-								onMouseEnter={(player, e) => {this.setState({renderPlayer: true, playerInfo: player, mouse: {mouseX: e.screenX, mouseY: e.screenY}})}}
+								onMouseMove={(e) => {this.setState({mouse:{mouseX: e.pageX, mouseY: e.pageY}})}}
+								onMouseEnter={(player, e) => {this.setState({renderPlayer: true, playerInfo: player, mouse: {mouseX: e.pageX, mouseY: e.pageY}})}}
 								onMouseLeave={() => this.setState({renderPlayer:false})}
 							/>
 						</Grid.Row>

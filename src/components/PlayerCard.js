@@ -12,10 +12,10 @@ class PlayerCard extends Component {
 
     componentDidMount(){
         if (this.props.player && this.props.mouseInfo){
-            var playerMod = this.props.player;
-            playerMod.stats.possession_time = Math.round(this.props.player.stats.possession_time)
+            var playerMod = this.props.player
+            playerMod.stats.possession_time = (Math.round(this.props.player.stats.possession_time *10)/10).toFixed(1)
             this.setState({
-                player: this.props.player,
+                player: playerMod,
                 mouse: this.props.mouseInfo,
                 isOrange: this.props.isOrange,
                 loaded: true
@@ -24,8 +24,8 @@ class PlayerCard extends Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-        // console.log("Prev state: ", prevState)
-        // console.log("Current state: ", this.state)
+        console.log("Prev state: ", prevState)
+        console.log("Current state: ", this.state)
         if(prevProps.mouseInfo !== this.props.mouseInfo) {
             this.setState({
                 mouse: this.props.mouseInfo
@@ -77,11 +77,10 @@ class PlayerCard extends Component {
     }
 
     render() { 
-        
         if (this.state.loaded && this.state.isOrange){
-            console.log(this.state.mouseX)
-            return ( 
-                   <Card size={"large"} style={{position: 'fixed', left: this.state.mouse.mouseX -75, bottom: 100, width: 400}} >
+            console.log("Render Orange")
+            return (
+                   <Card raised size={"large"} style={{position: 'fixed', left: this.state.mouse.mouseX + 20, top: this.state.mouse.mouseY - 410, width: 400, zIndex: 10}} >
                        <Card.Content>
                             <h1 style={{textAlign:'center'}}>{this.state.player.name}</h1>
                         {this.buildStats()}
@@ -89,13 +88,15 @@ class PlayerCard extends Component {
                    </Card>
          );
         } else if (this.state.loaded && !this.state.isOrange){
+            console.log("Render Blue")
             return (
-                <Card size="large" style={{position: 'fixed', left: this.state.mouse.mouseX - 750, bottom: 75, width: 400}}>
+                <Card raised size="large" style={{position: 'fixed', left: this.state.mouse.mouseX - 420, top: this.state.mouse.mouseY -390, width: 400, zIndex: 10}}>
                     <h1 style={{textAlign:'center'}}>{this.state.player.name}</h1>
                     {this.buildStats()}
-            </Card>)
+                </Card>)
             ;
         } else {
+            console.log("null")
            return ( null);
         }
     }
