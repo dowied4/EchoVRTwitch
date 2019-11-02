@@ -24,8 +24,8 @@ class PlayerCard extends Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-        console.log("Prev state: ", prevState)
-        console.log("Current state: ", this.state)
+        // console.log("Prev state: ", prevState)
+        // console.log("Current state: ", this.state)
         if(prevProps.mouseInfo !== this.props.mouseInfo) {
             this.setState({
                 mouse: this.props.mouseInfo
@@ -78,7 +78,6 @@ class PlayerCard extends Component {
 
     render() { 
         if (this.state.loaded && this.state.isOrange){
-            console.log("Render Orange")
             return (
                    <Card raised size={"large"} style={{position: 'fixed', left: this.state.mouse.mouseX + 20, top: this.state.mouse.mouseY - 410, width: 400, zIndex: 10}} >
                        <Card.Content>
@@ -88,7 +87,6 @@ class PlayerCard extends Component {
                    </Card>
          );
         } else if (this.state.loaded && !this.state.isOrange){
-            console.log("Render Blue")
             return (
                 <Card raised size="large" style={{position: 'fixed', left: this.state.mouse.mouseX - 420, top: this.state.mouse.mouseY -390, width: 400, zIndex: 10}}>
                     <h1 style={{textAlign:'center'}}>{this.state.player.name}</h1>
@@ -96,7 +94,6 @@ class PlayerCard extends Component {
                 </Card>)
             ;
         } else {
-            console.log("null")
            return ( null);
         }
     }

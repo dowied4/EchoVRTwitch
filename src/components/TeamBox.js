@@ -34,7 +34,7 @@ class TeamBox extends Component {
 							onMouseLeave={() => this.props.mouseLeave()}
 							size="mini"
 							textAlign='left'
-							style={{height: "150px",width: "15%", marginBottom: "25px", marginLeft: "22%", position: "relative"}}
+							style={{width: "15%", marginBottom: "25px", marginLeft: "22%", position: "relative"}}
 						>
 							{this.props.teamData.players.map((player, index) => (
 								<Grid.Row style={{marginBottom: "20px"}}>
@@ -58,7 +58,7 @@ class TeamBox extends Component {
 					onMouseLeave={() => this.props.mouseLeave()}
 					size="mini"
 					textAlign='left'
-					style={{height: "150px",width: "15%", marginBottom: "25px", marginLeft: "65%", position: "relative"}}
+					style={{width: "15%", marginBottom: "25px", marginLeft: "65%", position: "relative"}}
 				>
 					{this.props.teamData.players.map((player, index) => (
 						<Grid.Row style={{marginBottom: "20px", zIndex: -1}}>
