@@ -30,8 +30,6 @@ class Scoreboard extends Component {
 			blue = this.state.matchData.teams[1]
 			orange = this.state.matchData.teams[0]
 		}
-		console.log("Blue: ", blue)
-		console.log("Orange: ", orange)
 		blue.clockTime = new Date(blue.stats.possession_time * 1000).toISOString().substr(14, 5);
 		orange.clockTime = new Date(orange.stats.possession_time * 1000).toISOString().substr(14, 5)
 		this.setState({
@@ -50,8 +48,8 @@ class Scoreboard extends Component {
 					<center><h2>TEAM STATS</h2></center>
 					<Grid  textAlign="center" columns="equal">
 						<Grid.Row columns={2}>
-							<Grid.Column>{this.state.matchData.teams[0].team}</Grid.Column>
-							<Grid.Column>{this.state.matchData.teams[1].team}</Grid.Column>
+							<Grid.Column>{this.state.orangeTeam.team}</Grid.Column>
+							<Grid.Column>{this.state.blueTeam.team}</Grid.Column>
 						</Grid.Row>
 						<Grid.Row columns={5}>
 							<Grid.Column>

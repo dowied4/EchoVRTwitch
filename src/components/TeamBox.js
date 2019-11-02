@@ -37,7 +37,7 @@ class TeamBox extends Component {
 							style={{width: "15%", marginBottom: "25px", marginLeft: "22%", position: "relative"}}
 						>
 							{this.props.teamData.players.map((player, index) => (
-								<Grid.Row style={{marginBottom: "20px"}}>
+								<Grid.Row key={index} style={{marginBottom: "20px"}}>
 									<PlayerLabel
 										color={"orange"}
 										player={player}
@@ -61,7 +61,7 @@ class TeamBox extends Component {
 					style={{width: "15%", marginBottom: "25px", marginLeft: "65%", position: "relative"}}
 				>
 					{this.props.teamData.players.map((player, index) => (
-						<Grid.Row style={{marginBottom: "20px", zIndex: -1}}>
+						<Grid.Row key={index} style={{marginBottom: "20px", zIndex: -1}}>
 							<PlayerLabel
 								color={"blue"}
 								player={player}
