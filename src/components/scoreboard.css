@@ -1,0 +1,31 @@
+.blue-team-scoreboard{
+	opacity: 10% !important;
+	border-radius: 20px; 
+	background: #03dbfc;
+	font-size: large;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.orange-team-scoreboard{
+	opacity: 10% !important;
+	border-radius: 20px; 
+	background: orange;
+	font-size: large;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.gradient-orange{
+    opacity: 10% !important;
+	background-image: linear-gradient(-90deg, #03dbfc, orange);
+	border-radius: 20px;
+	font-size: medium;
+	font-weight: bold;
+	text-align: center;
+}
+
+.header-bold{
+	font-size: medium;
+}

@@ -29,7 +29,7 @@ class TeamBox extends Component {
 			return (
 					<Grid style={{position: "relative", zIndex:0}}>
 						{this.state.renderPlayer ? <PlayerCard player={this.state.playerInfo} isOrange={true} mouseInfo={this.state.mouse}/> : null}
-						<Segment
+						<div
 							onMouseEnter={() => {console.log("hovering")}}
 							onMouseLeave={() => this.props.mouseLeave()}
 							size="mini"
@@ -37,7 +37,7 @@ class TeamBox extends Component {
 							style={{width: "15%", marginBottom: "25px", marginLeft: "22%", position: "relative"}}
 						>
 							{this.props.teamData.players.map((player, index) => (
-								<Grid.Row key={index} style={{marginBottom: "20px"}}>
+								<Grid.Row key={index} style={{marginBottom: "20px",textAlign: "center"}}>
 									<PlayerLabel
 										color={"orange"}
 										player={player}
@@ -48,20 +48,20 @@ class TeamBox extends Component {
 									/>
 								</Grid.Row>
 							))}
-						</Segment>
+						</div>
 					</Grid>
 			 );
 		} return (
 			<Grid style={{position: "relative", zIndex:0}}>
 				{this.state.renderPlayer ? <PlayerCard player={this.state.playerInfo} isOrange={false} mouseInfo={this.state.mouse}/> : null}
-				<Segment
+				<div
 					onMouseLeave={() => this.props.mouseLeave()}
 					size="mini"
 					textAlign='left'
-					style={{width: "15%", marginBottom: "25px", marginLeft: "65%", position: "relative"}}
+					style={{width: "15%", marginBottom: "25px", marginLeft: "63%", position: "relative"}}
 				>
 					{this.props.teamData.players.map((player, index) => (
-						<Grid.Row key={index} style={{marginBottom: "20px", zIndex: -1}}>
+						<Grid.Row key={index} style={{marginBottom: "20px", textAlign: "center"}}>
 							<PlayerLabel
 								color={"blue"}
 								player={player}
@@ -72,7 +72,7 @@ class TeamBox extends Component {
 							/>
 						</Grid.Row>
 					))}
-				</Segment>
+				</div>
 			</Grid>
 		 );
 	}
