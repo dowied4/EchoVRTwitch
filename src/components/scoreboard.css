@@ -1,29 +1,32 @@
 .blue-team-scoreboard{
 	opacity: 10% !important;
 	border-radius: 20px; 
-	background: #03dbfc;
+	background: rgba(0, 124, 241, 0.9);
 	font-size: large;
 	font-weight: bold;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	color: white
 }
 
 .orange-team-scoreboard{
 	opacity: 10% !important;
 	border-radius: 20px; 
-	background: orange;
+	background: rgba(255, 141, 1, 0.90);
 	font-size: large;
 	font-weight: bold;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	color: white
 }
 .gradient-orange{
-    opacity: 10% !important;
-	background-image: linear-gradient(-90deg, #03dbfc, orange);
+	background: linear-gradient(90deg, rgba(215,117,0,0.8982143882943803) 0%, rgba(255,139,0,0.9430323154652486) 36%, rgba(74,74,74,0.9) 38%, rgba(74,74,74,0.9) 62%, rgba(0,124,241,0.9094188700870973) 64%, rgba(0,102,200,1) 100%);
 	border-radius: 20px;
 	font-size: medium;
 	font-weight: bold;
 	text-align: center;
+	margin-bottom: 10px;
+	color: white
 }
 
 .header-bold{

@@ -33,7 +33,6 @@ class TeamBox extends Component {
 							onMouseEnter={() => {console.log("hovering")}}
 							onMouseLeave={() => this.props.mouseLeave()}
 							size="mini"
-							textAlign='left'
 							style={{width: "15%", marginBottom: "25px", marginLeft: "22%", position: "relative"}}
 						>
 							{this.props.teamData.players.map((player, index) => (
@@ -57,7 +56,6 @@ class TeamBox extends Component {
 				<div
 					onMouseLeave={() => this.props.mouseLeave()}
 					size="mini"
-					textAlign='left'
 					style={{width: "15%", marginBottom: "25px", marginLeft: "63%", position: "relative"}}
 				>
 					{this.props.teamData.players.map((player, index) => (

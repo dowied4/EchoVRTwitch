@@ -627,6 +627,7 @@ export default class App extends React.Component{
 
     componentDidMount(){
         if(this.twitch){
+         console.log(this.twitch)
             this.twitch.onAuthorized((auth)=>{
                 this.Authentication.setToken(auth.token, auth.userId)
                 if(!this.state.finishedLoading){
@@ -672,31 +673,53 @@ export default class App extends React.Component{
                     {this.state.renderOrange? <TeamBox mouseLeave={() => {this.setState({renderOrange: false})}} teamData={this.state.matchData.teams[0].team === "ORANGE TEAM" ? this.state.matchData.teams[0] : this.state.matchData.teams[1]}/> : null}
                     {this.state.renderBlue ? <TeamBox mouseLeave={() => {this.setState({renderBlue: false})}} teamData={this.state.matchData.teams[0].team === "BLUE TEAM" ? this.state.matchData.teams[0] : this.state.matchData.teams[1]}/> : null}
                     <div className={this.state.theme === 'light' ? 'App-light' : 'App-dark'} >
-                        <div className="row">
-                            <div className="orange-team"
-                                onMouseEnter={() => this.setState({
-                                    renderOrange: true,
+                           <div className="row">
+                              <div className="exit"
+                                 onMouseEnter={() => this.setState({
+                                    renderOrange: false,
                                     renderBlue: false,
                                     renderScore: false
-                                })}
-                            />
-                            <div className="scoreboard"
-                                onMouseEnter={() => this.setState({
-                                    renderScore: true,
+                                 })}
+                              />
+                              <div className="orange-team"
+                                 onMouseEnter={() => this.setState({
+                                       renderOrange: true,
+                                       renderBlue: false,
+                                       renderScore: false
+                                 })}
+                              />
+                              <div className="scoreboard"
+                                 onMouseEnter={() => this.setState({
+                                       renderScore: true,
+                                       renderBlue: false,
+                                       renderOrange: false
+                                 })}
+                                 onMouseLeave={() => this.setState({renderScore: false})}
+                              />
+                              <div className="blue-team"
+                                 onMouseEnter={() => this.setState({
+                                       renderBlue: true,
+                                       renderOrange: false,
+                                       renderScore: false
+                                 })}
+                              />
+                              <div className="exit"
+                                 onMouseEnter={() => this.setState({
                                     renderBlue: false,
-                                    renderOrange: false
-                                })}
-                                onMouseLeave={() => this.setState({renderScore: false})}
-                            />
-                            <div className="blue-team"
-                                onMouseEnter={() => this.setState({
-                                    renderBlue: true,
                                     renderOrange: false,
                                     renderScore: false
-                                })}
-                            />
+                                 })}
+                              />
                         </div>
+                        <div className="exit-div"
+                           onMouseEnter={() => this.setState({
+                              renderBlue: false,
+                              renderOrange: false,
+                              renderScore: false
+                           })}
+                        />
                     </div>
+                    
                 </div>
             )
         }else{

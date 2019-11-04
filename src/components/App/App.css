@@ -4,7 +4,6 @@
     bottom:0;
     width: 100%;
 }
-
 .App-light{
     color:#232127;
     text-align: center;
@@ -17,14 +16,27 @@
     width: 100%;
 }
 
-.row{
-    width: 50%;
-    margin: 0 auto;
-    margin-bottom: 10px;
+.card-header{
+    padding-right: 10px;
+    font-weight: bold;
+    font-size: x-large;
 }
-
+.row{
+    width: 100%;
+    margin: 0 auto;
+}
+.exit-div{
+    width: 100%;
+    height: 10px;
+    margin: auto
+}
+.exit{
+    height:75px;
+    display: inline-block;
+    width: 25%;
+}
 .orange-team{
-    width:  15%;
+    width:  7.5%;
     height: 75px;
     background: orange;
     display: inline-block;
@@ -32,12 +44,12 @@
 .scoreboard{
     background: white;
     height: 75px;
-    width: 70%;
+    width: 35%;
     display: inline-block;
 }
 
 .blue-team{
-    width: 15%;
+    width: 7.5%;
     height: 75px;
     background: blue;
     display: inline-block;

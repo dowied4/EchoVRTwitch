@@ -45,15 +45,15 @@ class Scoreboard extends Component {
 	if (this.state.loaded)	{
 		return (
 				<div style={{margin: "0 auto", marginBottom: "25px", width: 600}}>
-					<center style={{marginBottom: 20}}><h1 style={{fontWeight: "bolder"}}>TEAM STATS</h1></center>
+					<center style={{marginBottom: 20}}><h1 style={{fontWeight: "bolder", color: "white"}}>TEAM STATS</h1></center>
 					<Grid textAlign="center" columns="equal">
 						<Grid.Row columns={3}>
 							<Grid.Column className="orange-team-scoreboard"><b>{this.state.orangeTeam.team}</b></Grid.Column>
 							<GridColumn width={1} className="spacer"></GridColumn>
 							<Grid.Column className="blue-team-scoreboard"><b>{this.state.blueTeam.team}</b></Grid.Column>
 						</Grid.Row>
-						<Grid.Row columns={5} className="gradient-orange">
-							<Grid.Column>
+						<Grid.Row columns={5} className="gradient-orange" >
+							<Grid.Column style={{marginBottom: 2}}>
 							{Math.round((this.state.orangeTeam.stats.possession_time/(this.state.orangeTeam.stats.possession_time + this.state.blueTeam.stats.possession_time)*100)).toFixed(0)}%</Grid.Column>
 							<Grid.Column >{this.state.orangeTeam.clockTime}</Grid.Column>
 							<Grid.Column width={3}><b className="header-bold">POSSESSION</b></Grid.Column>
@@ -89,7 +89,7 @@ class Scoreboard extends Component {
 							<Grid.Column>{Math.round((this.state.blueTeam.stats.steals/(this.state.orangeTeam.stats.steals + this.state.blueTeam.stats.steals)*100)).toFixed(0)}%</Grid.Column>
 						</Grid.Row>
 						<Grid.Row columns={5} className="gradient-orange">
-							<Grid.Column>{Math.round((this.state.orangeTeam.stats.steals/(this.state.orangeTeam.stats.stuns + this.state.blueTeam.stats.stuns)*100)).toFixed(0)}%</Grid.Column>
+							<Grid.Column>{Math.round((this.state.orangeTeam.stats.stuns/(this.state.orangeTeam.stats.stuns + this.state.blueTeam.stats.stuns)*100)).toFixed(0)}%</Grid.Column>
 							<Grid.Column >{this.state.orangeTeam.stats.stuns}</Grid.Column>
 							<Grid.Column width={3}><b className="header-bold">STUNS</b></Grid.Column>
 							<Grid.Column>{this.state.blueTeam.stats.stuns}</Grid.Column>
