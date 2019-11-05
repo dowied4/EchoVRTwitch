@@ -4,6 +4,7 @@ import Axios from 'axios';
 import { Grid, Button, Dimmer, Icon, Sidebar, Menu, Header, Segment } from 'semantic-ui-react';
 
 import './App.css'
+import '../font.css'
 import Scoreboard from '../Scoreboard';
 import TeamBox from '../TeamBox';
 
@@ -671,7 +672,7 @@ export default class App extends React.Component{
                     {this.state.renderScore ? <Scoreboard matchData={this.state.matchData}/> : null}
                     {this.state.renderOrange? <TeamBox mouseLeave={() => {this.setState({renderOrange: false})}} teamData={this.state.matchData.teams[0].team === "ORANGE TEAM" ? this.state.matchData.teams[0] : this.state.matchData.teams[1]}/> : null}
                     {this.state.renderBlue ? <TeamBox mouseLeave={() => {this.setState({renderBlue: false})}} teamData={this.state.matchData.teams[0].team === "BLUE TEAM" ? this.state.matchData.teams[0] : this.state.matchData.teams[1]}/> : null}
-                    <div className={this.state.theme === 'light' ? 'App-light' : 'App-dark'} >
+                    <div >
                         <div className="row">
                             <div className="orange-team"
                                 onMouseEnter={() => this.setState({
