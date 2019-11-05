@@ -66,7 +66,7 @@ class TeamBox extends Component {
 								key={index}
 								onMouseMove={(e) => {this.setState({mouse:{mouseX: e.pageX, mouseY: e.pageY}})}}
 								onMouseEnter={(player, e) => {this.setState({renderPlayer: true, playerInfo: player, mouse: {mouseX: e.pageX, mouseY: e.pageY}})}}
-								//onMouseLeave={() => this.setState({renderPlayer:false})}
+								onMouseLeave={() => this.setState({renderPlayer:false})}
 							/>
 						</Grid.Row>
 					))}

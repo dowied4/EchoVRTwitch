@@ -58,7 +58,7 @@ class Scoreboard extends Component {
 			blueStuns:Math.round((this.state.blueTeam.stats.stuns/(this.state.orangeTeam.stats.stuns + this.state.blueTeam.stats.stuns)*100)).toFixed(0)+'%'
 		}
 		return (
-				<div style={{display: "inline-block", width: 700}}>
+				<div style={{display: "inline-block", width: 700, marginBottom: 30}}>
 					<center style={{marginBottom: 20}}><h1 style={{color: "white"}}>TEAM STATS</h1></center>
 					<Grid textAlign="center" columns="equal" className="baseScoreboard">
 						<Grid.Row columns={3}>
