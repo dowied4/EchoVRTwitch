@@ -1,7 +1,13 @@
+h1 {
+	font-family: "DIN", sans-serif !important;
+	letter-spacing: .25rem;
+	font-weight: 500;
+	font-size: 1.5rem;
+}
+
 .blue-team-scoreboard{
-	opacity: 10% !important;
 	border-radius: 20px; 
-	background: rgba(0, 124, 241, 0.9);
+	/*background: rgba(0, 124, 241, 0.9); */
 	font-size: large;
 	font-weight: bold;
 	padding-top: 10px;
@@ -10,9 +16,8 @@
 }
 
 .orange-team-scoreboard{
-	opacity: 10% !important;
 	border-radius: 20px; 
-	background: rgba(255, 141, 1, 0.90);
+	/*background: rgba(255, 141, 1, 0.90); */
 	font-size: large;
 	font-weight: bold;
 	padding-top: 10px;
@@ -20,8 +25,7 @@
 	color: white
 }
 .gradient-orange{
-	background: linear-gradient(90deg, rgba(215,117,0,0.8982143882943803) 0%, rgba(255,139,0,0.9430323154652486) 36%, rgba(74,74,74,0.9) 38%, rgba(74,74,74,0.9) 62%, rgba(0,124,241,0.9094188700870973) 64%, rgba(0,102,200,1) 100%);
-	border-radius: 20px;
+	padding:.75rem 0em !important;
 	font-size: medium;
 	font-weight: bold;
 	text-align: center;
@@ -31,4 +35,35 @@
 
 .header-bold{
 	font-size: medium;
+}
+
+/* PAPA MIA WROTE THESE */
+.baseScoreboard {
+	background-color: #283131;
+	border-radius: 5px;
+	margin:5px;
+}
+
+.barBackground {
+	height:3px;
+	padding:0px !important;
+	background-color:#414246;
+}
+
+.bar{
+	height:3px;
+}
+
+.blue {
+	background-color:#204fe9;
+}
+
+.orange {
+	background-color:#e9a220;
+	float:right;
+}
+
+.noMargin{
+	padding: 0px 8% !important;
+	margin:8px 0px 0px 0px !important;
 }

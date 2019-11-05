@@ -4,6 +4,7 @@ import Axios from 'axios';
 import { Grid, Button, Dimmer, Icon, Sidebar, Menu, Header, Segment } from 'semantic-ui-react';
 
 import './App.css'
+import '../font.css'
 import Scoreboard from '../Scoreboard';
 import TeamBox from '../TeamBox';
 

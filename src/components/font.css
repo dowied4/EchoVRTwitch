@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "DIN";
+    font-weight: 600;
+    src:url("./fonts/dinpro-bold.woff") format("woff")
+}
+
+@font-face {
+    font-family: "DIN";
+    font-style: normal;
+    font-weight: 500;
+    src:url("./fonts/dinpro-medium-webfont.woff") format("woff")
+}
+
+@font-face {
+    font-family: "DIN";
+    font-style: normal;
+    font-weight: 400;
+    src:url("./fonts/dinpro-regular-webfont.woff") format("woff")
+}
