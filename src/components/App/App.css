@@ -49,6 +49,11 @@ body {
     background: orange;
     display: inline-block;
 }
+.player-label{
+    margin-bottom: 20px;
+    text-align: center;
+    background: "green";
+}
 .scoreboard{
     background: white;
     height: 75px;
