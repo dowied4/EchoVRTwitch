@@ -16,9 +16,17 @@ class Scoreboard extends Component {
 
 	componentDidMount(){
 		if (this.props.matchData){
+			var match = this.props.matchData;
 			this.setState({
 				matchData: this.props.matchData,
 			}, () => this.configureStats())
+		}
+	}
+	componentDidUpdate(prevProps, prevState){
+		if(prevProps !== this.props) {
+			this.setState({
+				matchData: this.props.matchData
+			}, this.configureStats())
 		}
 	}
 
@@ -44,18 +52,18 @@ class Scoreboard extends Component {
 	render() {
 	if (this.state.loaded)	{
 		let sizes = {
-			orangePos: Math.round((this.state.orangeTeam.stats.possession_time/(this.state.orangeTeam.stats.possession_time + this.state.blueTeam.stats.possession_time)*100)).toFixed(0)+'%',
-			bluePos: Math.round((this.state.blueTeam.stats.possession_time/(this.state.orangeTeam.stats.possession_time + this.state.blueTeam.stats.possession_time))*100).toFixed(0)+'%',
-			orangeShots: Math.round((this.state.orangeTeam.stats.shots_taken/(this.state.orangeTeam.stats.shots_taken + this.state.blueTeam.stats.shots_taken)*100)).toFixed(0)+'%',
-			blueShots: Math.round((this.state.blueTeam.stats.shots_taken/(this.state.orangeTeam.stats.shots_taken + this.state.blueTeam.stats.shots_taken)*100)).toFixed(0)+'%',
-			orangeAssists:Math.round((this.state.orangeTeam.stats.assists/(this.state.orangeTeam.stats.assists + this.state.blueTeam.stats.assists)*100)).toFixed(0)+'%',
-			blueAssists:Math.round((this.state.blueTeam.stats.assists/(this.state.blueTeam.stats.assists + this.state.orangeTeam.stats.assists)*100)).toFixed(0)+'%',
-			orangeSaves:Math.round((this.state.orangeTeam.stats.saves/(this.state.orangeTeam.stats.saves + this.state.blueTeam.stats.saves)*100)).toFixed(0)+'%',
-			blueSaves:Math.round((this.state.blueTeam.stats.saves/(this.state.orangeTeam.stats.saves + this.state.blueTeam.stats.saves)*100)).toFixed(0)+'%',
-			orangeSteals:Math.round((this.state.orangeTeam.stats.steals/(this.state.orangeTeam.stats.steals + this.state.blueTeam.stats.steals)*100)).toFixed(0)+'%',
-			blueSteals:Math.round((this.state.blueTeam.stats.steals/(this.state.orangeTeam.stats.steals + this.state.blueTeam.stats.steals)*100)).toFixed(0)+'%',
-			orangeStuns:Math.round((this.state.orangeTeam.stats.stuns/(this.state.orangeTeam.stats.stuns + this.state.blueTeam.stats.stuns)*100)).toFixed(0)+'%',
-			blueStuns:Math.round((this.state.blueTeam.stats.stuns/(this.state.orangeTeam.stats.stuns + this.state.blueTeam.stats.stuns)*100)).toFixed(0)+'%'
+			orangePos: this.state.orangeTeam.stats.possession_time === 0 ? "0%" : Math.round((this.state.orangeTeam.stats.possession_time/(this.state.orangeTeam.stats.possession_time + this.state.blueTeam.stats.possession_time)*100)).toFixed(0)+'%',
+			bluePos: this.state.blueTeam.stats.possession_time === 0 ? "0%" : Math.round((this.state.blueTeam.stats.possession_time/(this.state.orangeTeam.stats.possession_time + this.state.blueTeam.stats.possession_time))*100).toFixed(0)+'%',
+			orangeShots: this.state.orangeTeam.stats.shots_taken === 0 ? "0%" : Math.round((this.state.orangeTeam.stats.shots_taken/(this.state.orangeTeam.stats.shots_taken + this.state.blueTeam.stats.shots_taken)*100)).toFixed(0)+'%',
+			blueShots: this.state.blueTeam.stats.shots_taken === 0 ? "0%" : Math.round((this.state.blueTeam.stats.shots_taken/(this.state.orangeTeam.stats.shots_taken + this.state.blueTeam.stats.shots_taken)*100)).toFixed(0)+'%',
+			orangeAssists: this.state.orangeTeam.stats.assists === 0 ? "0%" : Math.round((this.state.orangeTeam.stats.assists/(this.state.orangeTeam.stats.assists + this.state.blueTeam.stats.assists)*100)).toFixed(0)+'%',
+			blueAssists: this.state.blueTeam.stats.assists === 0 ? "0%" : Math.round((this.state.blueTeam.stats.assists/(this.state.blueTeam.stats.assists + this.state.orangeTeam.stats.assists)*100)).toFixed(0)+'%',
+			orangeSaves: this.state.orangeTeam.stats.saves === 0 ? "0%": Math.round((this.state.orangeTeam.stats.saves/(this.state.orangeTeam.stats.saves + this.state.blueTeam.stats.saves)*100)).toFixed(0)+'%',
+			blueSaves: this.state.blueTeam.stats.saves === 0 ? "0%":  Math.round((this.state.blueTeam.stats.saves/(this.state.orangeTeam.stats.saves + this.state.blueTeam.stats.saves)*100)).toFixed(0)+'%',
+			orangeSteals: this.state.orangeTeam.stats.steals === 0 ? "0%" : Math.round((this.state.orangeTeam.stats.steals/(this.state.orangeTeam.stats.steals + this.state.blueTeam.stats.steals)*100)).toFixed(0)+'%',
+			blueSteals: this.state.blueTeam.stats.steals === 0 ? "0%" : Math.round((this.state.blueTeam.stats.steals/(this.state.orangeTeam.stats.steals + this.state.blueTeam.stats.steals)*100)).toFixed(0)+'%',
+			orangeStuns: this.state.orangeTeam.stats.stuns === 0 ? "0%" : Math.round((this.state.orangeTeam.stats.stuns/(this.state.orangeTeam.stats.stuns + this.state.blueTeam.stats.stuns)*100)).toFixed(0)+'%',
+			blueStuns: this.state.blueTeam.stats.stuns === 0 ? "0%" : Math.round((this.state.blueTeam.stats.stuns/(this.state.orangeTeam.stats.stuns + this.state.blueTeam.stats.stuns)*100)).toFixed(0)+'%'
 		}
 		return (
 				<div style={{display: "inline-block", width: 700, marginBottom: 30}}>

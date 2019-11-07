@@ -26,7 +26,7 @@ class TeamBox extends Component {
 			return (
 				<div>Loading...</div>
 			)
-		} else if (this.props.teamData.team === "ORANGE TEAM") {
+		} else if (this.props.teamIndex === 1) {
 			return (
 				<Grid style={{position: "relative", zIndex:0}}>
 					{this.state.renderPlayer ? <PlayerCard player={this.state.playerInfo} isOrange={true} mouseInfo={this.state.mouse}/> : null}
