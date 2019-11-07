@@ -37,10 +37,16 @@ export default class App extends React.Component{
                 this.setState({
                     finishedLoading: true,
                     matchData: res.data
-                })
+                }, () => {
+                  clearInterval(this.interval);
+                  this.interval = setInterval( () => this.getMatch(), 1000);
+               })
             }
          }).catch((err) => {
-           console.log(err);
+           if(err.response.status === 500){
+              this.setState({finishedLoading: false})
+           }
+            console.warn(err.response);
          });
       }
     }
@@ -77,7 +83,7 @@ export default class App extends React.Component{
                         streamer: result.data.data[0]
                      })
                   })
-                .catch(err => {console.log(err)})
+                .catch(err => {console.warn(err.response)})
                 if(!this.state.finishedLoading){
                     // if the component hasn't finished loading (as in we've not set up after getting a token), let's set it up now.
 

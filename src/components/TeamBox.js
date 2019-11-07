@@ -35,7 +35,7 @@ class TeamBox extends Component {
 						size="mini"
 						style={{width:"15%",marginBottom: "25px", marginLeft: "22%", position: "relative"}}
 					>
-						{this.props.teamData.players.map((player, index) => {console.log("here");
+						{this.props.teamData.players.map((player, index) => {
 						return(
 							<Card key={index} style={{marginBottom: "20px", textAlign: "center"}}>
 								<PlayerLabel
