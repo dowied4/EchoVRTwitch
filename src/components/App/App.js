@@ -7,6 +7,9 @@ import './App.css'
 import '../font.css'
 import Scoreboard from '../Scoreboard';
 import TeamBox from '../TeamBox';
+import * as firebase from 'firebase/app';
+require("firebase/firestore");
+
 
 export default class App extends React.Component{
     constructor(props){
@@ -23,31 +26,32 @@ export default class App extends React.Component{
             renderOrange: false,
             renderScore: false,
             matchData: null,
-            visible: true 
+            visible: true ,
         }
         this.getMatch = this.getMatch.bind(this);
+        var config = {
+            apiKey: "AIzaSyDBDMGG037xZnc7l1LUS3MkGgUHpGWd9yE",
+            authDomain: "echovrconnect-6b9cb.firebaseapp.com",
+            databaseURL: "https://echovrconnect-6b9cb.firebaseio.com",
+            projectId: "echovrconnect-6b9cb",
+            storageBucket: "echovrconnect-6b9cb.appspot.com",
+            messagingSenderId: "1048248144557",
+            appId: "1:1048248144557:web:865ca74a75873d781dec24",
+            measurementId: "G-PG51TVKWW3"
+          };
+          firebase.initializeApp(config);
+          this.db = firebase.firestore();
     }
 
     getMatch() {
-       if(this.state.streamer) {
-         // console.log(this.state.streamer)
-         Axios.get('https://cors-anywhere.herokuapp.com/96.52.114.81:8080/match')
-         .then(res => {
-            if(res.data.game_status === "playing" || res.data.game_status ==="round_start" || res.data.game_status === "score") {
-                this.setState({
-                    finishedLoading: true,
-                    matchData: res.data
-                }, () => {
-                  clearInterval(this.interval);
-                  this.interval = setInterval( () => this.getMatch(), 1000);
-               })
-            }
-         }).catch((err) => {
-           if(err.response.status === 500){
-              this.setState({finishedLoading: false})
-           }
-            console.warn(err.response);
-         });
+       if(this.state.uid) {
+         let doc = this.db.collection('matchsnaps').doc(this.state.uid);
+         let observer = doc.onSnapshot(snap => {
+             console.log(snap.data());
+             this.setState({matchData: snap.data()})
+         }, err => {
+             console.log(err)
+         })
       }
     }
 
@@ -69,21 +73,26 @@ export default class App extends React.Component{
             }
         })
     }
+    
+    componentDidUpdate(prevProps, prevState){
+        // console.log(prevState);
+        // console.log(this.state)
+        if(this.state.uid !== prevState.uid){
+            if(this.state.uid){
+                this.getMatch()
+            }
+        }
+    }
 
     componentDidMount(){
         if(this.twitch){
+            window.Twitch.ext.configuration.onChanged(() => {
+                this.setState({
+                    uid: window.Twitch.ext.configuration.broadcaster.content
+                })
+            })
             this.twitch.onAuthorized((auth)=>{
                 this.Authentication.setToken(auth.token, auth.userId)
-                console.log(auth)
-                Axios.get('https://api.twitch.tv/helix/users?id=' + auth.channelId,{
-                   headers: {'Client-ID': auth.clientId}
-                })
-                .then(result => {
-                     this.setState({
-                        streamer: result.data.data[0]
-                     })
-                  })
-                .catch(err => {console.warn(err.response)})
                 if(!this.state.finishedLoading){
                     // if the component hasn't finished loading (as in we've not set up after getting a token), let's set it up now.
 
@@ -93,7 +102,6 @@ export default class App extends React.Component{
                     })
                 }
             })
-
             this.twitch.listen('broadcast',(target,contentType,body)=>{
                 this.twitch.rig.log(`New PubSub message!\n${target}\n${contentType}\n${body}`)
                 // now that you've got a listener, do something with the result...
@@ -109,11 +117,17 @@ export default class App extends React.Component{
             this.twitch.onContext((context,delta)=>{
                 this.contextUpdate(context,delta)
             })
-            this.interval = setInterval(() => this.getMatch(), 1000)
-            // this.getMatch()
         }
     }
-
+                // Axios.get('https://api.twitch.tv/helix/users?id=' + auth.channelId,{
+                //    headers: {'Client-ID': auth.clientId}
+                // })
+                // .then(result => {
+                //      this.setState({
+                //         streamer: result.data.data[0]
+                //      })
+                //   })
+                // .catch(err => {console.warn(err.response)})
     componentWillUnmount(){
         if(this.twitch){
             this.twitch.unlisten('broadcast', ()=>console.log('successfully unlistened'))
