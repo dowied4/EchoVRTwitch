@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Segment, Grid } from 'semantic-ui-react'
+import background from './img/echo-arena-with-logo.jpg'
 
 class PlayerCard extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class PlayerCard extends Component {
     }
 
     componentDidMount(){
+        console.log(background)
         if (this.props.player && this.props.mouseInfo){
             var playerMod = this.props.player
             playerMod.stats.possession_time = (Math.round(this.props.player.stats.possession_time *10)/10).toFixed(1)
@@ -33,65 +35,65 @@ class PlayerCard extends Component {
         }
     }
 
-    buildStats(){
+    buildStats(team){
         return(
             <Grid style={{margin: 2}}>
-                <Grid.Row columns={4}>
-                    <Grid.Column className="card-header"><h5>Assists:</h5></Grid.Column>
-                    <Grid.Column>{this.state.player.stats.assists}</Grid.Column>
-                    <Grid.Column className="card-header"><h5>Blocks:</h5></Grid.Column>
-                    <Grid.Column>{this.state.player.stats.blocks}</Grid.Column>
+                <Grid.Row columns={2}>
+                    <Grid.Column >
+                        <Grid.Row className="card-header">{this.state.player.stats.points}</Grid.Row>
+                        <Grid.Row className="header-label">POINTS</Grid.Row>
+                    </Grid.Column>
+                <Grid.Column className="header-percentage">{this.props.team.stats.points === 0 ? "0%" : Math.round((this.state.player.stats.points/this.props.team.stats.points)*100).toFixed(0) + '%'}</Grid.Column>
                 </Grid.Row>
-                <Grid.Row columns={4}>
-                    <Grid.Column className="card-header"><h5>Catches:</h5></Grid.Column>
-                    <Grid.Column>{this.state.player.stats.catches}</Grid.Column>
-                    <Grid.Column className="card-header"><h5>Goals:</h5></Grid.Column>
-                    <Grid.Column>{this.state.player.stats.goals}</Grid.Column>
+                <Grid.Row columns={2}>
+                    <Grid.Column >
+                        <Grid.Row className="card-header">{this.state.player.stats.assists}</Grid.Row>
+                        <Grid.Row className="header-label">ASSISTS</Grid.Row>
+                    </Grid.Column>
+                    <Grid.Column className="header-percentage">{this.props.team.stats.assists === 0 ? "0%" : Math.round((this.state.player.stats.assists/this.props.team.stats.assists)*100).toFixed(0) + '%'}</Grid.Column>
                 </Grid.Row>
-                <Grid.Row columns={4}>
-                    <Grid.Column className="card-header"><h5>Interceptions:</h5></Grid.Column>
-                    <Grid.Column >{this.state.player.stats.interceptions}</Grid.Column>
-                    <Grid.Column className="card-header"><h5>Passes:</h5></Grid.Column>
-                    <Grid.Column>{this.state.player.stats.passes}</Grid.Column>
+                <Grid.Row columns={2}>
+                    <Grid.Column >
+                        <Grid.Row className="card-header">{this.state.player.stats.saves}</Grid.Row>
+                        <Grid.Row className="header-label">SAVES</Grid.Row>
+                    </Grid.Column>
+                    <Grid.Column className="header-percentage">{this.props.team.stats.saves === 0 ? "0%" : Math.round((this.state.player.stats.saves/this.props.team.stats.saves)*100).toFixed(0) + '%'}</Grid.Column>
                 </Grid.Row>
-                <Grid.Row columns={4}>
-                    <Grid.Column className="card-header"><h5>Points:</h5></Grid.Column>
-                    <Grid.Column>{this.state.player.stats.points}</Grid.Column>
-                    <Grid.Column className="card-header"><h5>Possession:</h5></Grid.Column>
-                    <Grid.Column>{this.state.player.stats.possession_time}</Grid.Column>
+                <Grid.Row columns={2}>
+                    <Grid.Column >
+                        <Grid.Row className="card-header">{this.state.player.stats.stuns}</Grid.Row>
+                        <Grid.Row className="header-label">STUNS</Grid.Row>
+                    </Grid.Column>
+                    <Grid.Column className="header-percentage">{this.props.team.stats.stuns === 0 ? "0%" : Math.round((this.state.player.stats.stuns/this.props.team.stats.stuns)*100).toFixed(0) + '%'}</Grid.Column>
                 </Grid.Row>
-                <Grid.Row columns={4}>
-                    <Grid.Column className="card-header"><h5>Saves:</h5></Grid.Column>
-                    <Grid.Column>{this.state.player.stats.saves}</Grid.Column>
-                    <Grid.Column className="card-header"><h5>Shots:</h5></Grid.Column>
-                    <Grid.Column>{this.state.player.stats.shots_taken}</Grid.Column>
-                </Grid.Row>
-                <Grid.Row columns={4}>
-                    <Grid.Column className="card-header"><h5>Steals:</h5></Grid.Column>
-                    <Grid.Column>{this.state.player.stats.steals}</Grid.Column>
-                    <Grid.Column className="card-header"><h5>Stuns:</h5></Grid.Column>
-                    <Grid.Column>{this.state.player.stats.stuns}</Grid.Column>
+                <Grid.Row columns={2}>
+                    <Grid.Column >
+                        <Grid.Row className="team-tag">
+                            {this.props.team.team}
+                        </Grid.Row>
+                        <Grid.Row className="player-name">
+                            {this.state.player.name}
+                        </Grid.Row>
+                    </Grid.Column>
                 </Grid.Row>
             </Grid>
         )
     }
 
-    render() { 
+    render() {
         if (this.state.loaded && this.state.isOrange){
             return (
-                   <Card raised size={"large"} style={{background: "rgba(73, 73, 73, 0.9)",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX + 20, top: this.state.mouse.mouseY - 410,width: 500,  zIndex: 10}} >
+                   <Card raised size="large" className="grid-background-orange" style={{background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX + 20, top: this.state.mouse.mouseY - 475,width: 325,  zIndex: 10}} >
                        <Card.Content>
-                            <h1 style={{textAlign:'center'}}>{this.state.player.name}</h1>
-                        {this.buildStats()}
+                        {this.buildStats("orange")}
                    </Card.Content>
                    </Card>
          );
         } else if (this.state.loaded && !this.state.isOrange){
             return (
-                <Card raised size={"large"} style={{background: "rgba(73, 73, 73, 0.9)",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX - 520, top: this.state.mouse.mouseY -390,width: 500, zIndex: 10}}>
+                <Card raised size="large" className="grid-background-blue" style={{background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX - 345, top: this.state.mouse.mouseY -475,width: 325, zIndex: 10}}>
                     <Card.Content>
-                        <h1 style={{textAlign:'center'}}>{this.state.player.name}</h1>
-                        {this.buildStats()}
+                        {this.buildStats("blue")}
                     </Card.Content>
                 </Card>)
             ;

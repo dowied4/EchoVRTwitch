@@ -9,7 +9,7 @@ class PlayerLabel extends Component {
 		if(this.props.player){
 			return (
 				<Label
-					color={this.props.color}
+					style={{color: "white", fontWeight: "bold", background: this.props.color === "blue" ? "#204fe9" : "#e9a220"}}
 					onMouseMove={(e) => this.props.onMouseMove(e)}
 					onMouseEnter={(e) => this.props.onMouseEnter(this.props.player, e)}
 					onMouseLeave={() => this.props.onMouseLeave()}

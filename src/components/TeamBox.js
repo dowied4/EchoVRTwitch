@@ -29,7 +29,7 @@ class TeamBox extends Component {
 		} else if (this.props.teamIndex === 1) {
 			return (
 				<Grid style={{position: "relative", zIndex:0}}>
-					{this.state.renderPlayer ? <PlayerCard player={this.state.playerInfo} isOrange={true} mouseInfo={this.state.mouse}/> : null}
+					{this.state.renderPlayer ? <PlayerCard player={this.state.playerInfo} team={this.props.teamData} isOrange={true} mouseInfo={this.state.mouse}/> : null}
 					<div
 						onMouseLeave={() => this.props.mouseLeave()}
 						size="mini"
@@ -55,7 +55,7 @@ class TeamBox extends Component {
 		} else {
 			return (
 				<Grid style={{position: "relative", zIndex:0}}>
-					{this.state.renderPlayer ? <PlayerCard player={this.state.playerInfo} isOrange={false} mouseInfo={this.state.mouse}/> : null}
+					{this.state.renderPlayer ? <PlayerCard player={this.state.playerInfo} team={this.props.teamData} isOrange={false} mouseInfo={this.state.mouse}/> : null}
 					<div
 						onMouseLeave={() => this.props.mouseLeave()}
 						size="mini"
@@ -64,7 +64,7 @@ class TeamBox extends Component {
 						{this.props.teamData.players.map((player, index) => (
 							<Card key={index} style={{marginBottom: "20px", textAlign: "center"}}>
 								<PlayerLabel
-									color={"blue"}
+									color="blue"
 									player={player}
 									key={index}
 									onMouseMove={(e) => {this.setState({mouse:{mouseX: e.pageX, mouseY: e.pageY}})}}
