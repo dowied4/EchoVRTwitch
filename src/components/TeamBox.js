@@ -33,11 +33,11 @@ class TeamBox extends Component {
 					<div
 						onMouseLeave={() => this.props.mouseLeave()}
 						size="mini"
-						style={{width:"15%",marginBottom: "25px",marginTop: "25px", marginLeft: "22%", position: "relative"}}
+						style={{width:"15%",marginBottom: "10px",marginTop: "10px", marginLeft: "22%", position: "relative"}}
 					>
 						{this.props.teamData.players.map((player, index) => {
 						return(
-							<Card key={index} style={{marginBottom: "20px", textAlign: "center"}}>
+							<Card key={index} style={{marginBottom: "5px", textAlign: "center"}}>
 								<PlayerLabel
 									color={"orange"}
 									player={player}
@@ -59,10 +59,10 @@ class TeamBox extends Component {
 					<div
 						onMouseLeave={() => this.props.mouseLeave()}
 						size="mini"
-						style={{width: "15%", marginBottom: "25px", marginTop: "25px", marginLeft: "63%", position: "relative"}}
+						style={{width: "15%", marginBottom: "10px", marginTop: "10px", marginLeft: "63%", position: "relative"}}
 					>
 						{this.props.teamData.players.map((player, index) => (
-							<Card key={index} style={{marginBottom: "20px", textAlign: "center"}}>
+							<Card key={index} style={{marginBottom: "5px", textAlign: "center"}}>
 								<PlayerLabel
 									color="blue"
 									player={player}
