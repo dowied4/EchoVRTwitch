@@ -26,6 +26,7 @@ export default class App extends React.Component{
             matchData: null,
             visible: true ,
         }
+        this.renderBounds = this.renderBounds.bind(this)
     }
 
     componentWillUnmount() {
@@ -104,62 +105,79 @@ export default class App extends React.Component{
         }
     }
 
+    renderBounds(){
+        return(
+            <div className={this.state.theme === 'light' ? 'App-light' : 'App-dark'} >
+                <div className="row">
+                    <div className="exit"
+                        onMouseEnter={() => this.setState({
+                            renderOrange: false,
+                            renderBlue: false,
+                            renderScore: false
+                        })}
+                    />
+                    <div className="orange-team"
+                        onMouseEnter={() => this.setState({
+                            renderOrange: true,
+                            renderBlue: false,
+                            renderScore: false
+                        })}
+                    />
+                    <div className="scoreboard"
+                        onMouseEnter={() => this.setState({
+                            renderScore: true,
+                            renderBlue: false,
+                            renderOrange: false
+                        })}
+                        onMouseLeave={() => this.setState({renderScore: false})}
+                    />
+                    <div className="blue-team"
+                        onMouseEnter={() => this.setState({
+                            renderBlue: true,
+                            renderOrange: false,
+                            renderScore: false
+                        })}
+                    />
+                    <div className="exit"
+                        onMouseEnter={() => this.setState({
+                            renderBlue: false,
+                            renderOrange: false,
+                            renderScore: false
+                        })}
+                    />
+                </div>
+                <div className="exit-div"
+                onMouseEnter={() => this.setState({
+                    renderBlue: false,
+                    renderOrange: false,
+                    renderScore: false
+                })}
+                />
+            </div>
+        );
+    }
+
     render(){
         if(this.state.finishedLoading && this.state.isVisible && this.state.matchData){
-            return (
-                <div className="App">
-                    {this.state.renderScore ? <Scoreboard matchData={this.state.matchData}/> : null}
-                    {this.state.renderOrange? <TeamBox mouseLeave={() => {this.setState({renderOrange: false})}} teamData={this.state.matchData.teams[1]} teamIndex={1}/> : null}
-                    {this.state.renderBlue ? <TeamBox mouseLeave={() => {this.setState({renderBlue: false})}} teamData={this.state.matchData.teams[0]} teamIndex={0}/> : null}
-                    <div className={this.state.theme === 'light' ? 'App-light' : 'App-dark'} >
-                           <div className="row">
-                              <div className="exit"
-                                 onMouseEnter={() => this.setState({
-                                    renderOrange: false,
-                                    renderBlue: false,
-                                    renderScore: false
-                                 })}
-                              />
-                              <div className="orange-team"
-                                 onMouseEnter={() => this.setState({
-                                       renderOrange: true,
-                                       renderBlue: false,
-                                       renderScore: false
-                                 })}
-                              />
-                              <div className="scoreboard"
-                                 onMouseEnter={() => this.setState({
-                                       renderScore: true,
-                                       renderBlue: false,
-                                       renderOrange: false
-                                 })}
-                                 onMouseLeave={() => this.setState({renderScore: false})}
-                              />
-                              <div className="blue-team"
-                                 onMouseEnter={() => this.setState({
-                                       renderBlue: true,
-                                       renderOrange: false,
-                                       renderScore: false
-                                 })}
-                              />
-                              <div className="exit"
-                                 onMouseEnter={() => this.setState({
-                                    renderBlue: false,
-                                    renderOrange: false,
-                                    renderScore: false
-                                 })}
-                              />
-                        </div>
-                        <div className="exit-div"
-                           onMouseEnter={() => this.setState({
-                              renderBlue: false,
-                              renderOrange: false,
-                              renderScore: false
-                           })}
-                        />
+            if(this.state.matchData.top){
+                return (
+                    <div className="App-top">
+                        {this.renderBounds()}
+                        {this.state.renderScore ? <Scoreboard matchData={this.state.matchData}/> : null}
+                        {this.state.renderOrange? <TeamBox top={true} mouseLeave={() => {this.setState({renderOrange: false})}} teamData={this.state.matchData.teams[1]} teamIndex={1}/> : null}
+                        {this.state.renderBlue ? <TeamBox top={true} mouseLeave={() => {this.setState({renderBlue: false})}} teamData={this.state.matchData.teams[0]} teamIndex={0}/> : null}
                     </div>
-                </div>
-            )
+                )
+            } else {
+                return (
+                    <div className="App-bottom">
+                        {this.state.renderScore ? <Scoreboard matchData={this.state.matchData}/> : null}
+                        {this.state.renderOrange? <TeamBox mouseLeave={() => {this.setState({renderOrange: false})}} teamData={this.state.matchData.teams[1]} teamIndex={1}/> : null}
+                        {this.state.renderBlue ? <TeamBox mouseLeave={() => {this.setState({renderBlue: false})}} teamData={this.state.matchData.teams[0]} teamIndex={0}/> : null}
+                        {this.renderBounds()}
+                    </div>
+                )
+            }
         }else{
             return (
                 <div className="App">

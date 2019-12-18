@@ -66,7 +66,7 @@ class PlayerCard extends Component {
                 </Grid.Row>
                 <Grid.Row columns={2}>
                     <Grid.Column >
-                        <Grid.Row className="team-tag">
+                        <Grid.Row className="team-tag" style={{color: team === "blue" ? '#1f9ce4' : "#e9a220"}}>
                             {this.props.team.team}
                         </Grid.Row>
                         <Grid.Row className="player-name">
@@ -79,9 +79,13 @@ class PlayerCard extends Component {
     }
 
     render() {
+        let topOff
+        if(this.state.loaded){
+           topOff = this.props.top ? this.state.mouse.mouseY + 25 : this.state.mouse.mouseY - 475
+        }
         if (this.state.loaded && this.state.isOrange){
             return (
-                   <Card raised size="large" className="grid-background-orange" style={{background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX + 20, top: this.state.mouse.mouseY - 475,width: 325,  zIndex: 10}} >
+                   <Card raised size="large" className="grid-background-orange" style={{background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX + 20, top: topOff,width: 325,  zIndex: 10}} >
                        <Card.Content>
                         {this.buildStats("orange")}
                    </Card.Content>
@@ -89,7 +93,7 @@ class PlayerCard extends Component {
          );
         } else if (this.state.loaded && !this.state.isOrange){
             return (
-                <Card raised size="large" className="grid-background-blue" style={{background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX - 345, top: this.state.mouse.mouseY -475,width: 325, zIndex: 10}}>
+                <Card raised size="large" className="grid-background-blue" style={{background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX - 345, top: topOff,width: 325, zIndex: 10}}>
                     <Card.Content>
                         {this.buildStats("blue")}
                     </Card.Content>

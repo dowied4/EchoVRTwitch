@@ -1,7 +1,14 @@
-.App {
+.App-bottom {
     font-family: "DIN", sans-serif !important;
     position: absolute;
     bottom:0;
+    width: 100%;
+    text-align: center;
+}
+.App-top {
+    font-family: "DIN", sans-serif !important;
+    position: absolute;
+    top:0;
     width: 100%;
     text-align: center;
 }
@@ -41,7 +48,7 @@ body {
 
 .grid-background-blue{
     background-image: url("https://firebasestorage.googleapis.com/v0/b/echovrconnect-6b9cb.appspot.com/o/stream_buddy_images%2Fblue-background.png?alt=media") !important;
-    background-position: -250px -50px !important; 
+    background-position: -250px -100px !important; 
     background-size: 1000px !important;
     background-repeat: no-repeat !important;
     backdrop-filter: blur(8px);
@@ -99,7 +106,6 @@ body {
     display: inline-block;
 }
 .team-tag{
-    color: #e9a220;
     text-align: left;
     font-size: small;
     font-weight: 600;
