@@ -1,7 +1,7 @@
 import React from 'react'
 import Authentication from '../../util/Authentication/Authentication'
 import Axios from 'axios';
-import { Grid, Button, Dimmer, Icon, Sidebar, Menu, Header, Segment } from 'semantic-ui-react';
+import { Grid, Button, Dimmer, Icon, Sidebar, Menu, Header, Segment, StepTitle } from 'semantic-ui-react';
 
 import './App.css'
 import '../font.css'
@@ -64,6 +64,19 @@ export default class App extends React.Component{
                         return {finishedLoading:true}
                     })
                 }
+                console.log(auth)
+                Axios.get("https://us-central1-echovrconnect-6b9cb.cloudfunctions.net/getMatchData", {headers: {'Twitch-ID': auth.channelId}})
+                .then((match) => {
+                    console.log(match)
+                    this.setState({
+                        matchData: match.data.match
+                    })
+                    }
+                )
+                .catch((err) => {
+                    console.log('%c 🍮 err: ', 'font-size:20px;background-color: #E41A6A;color:#fff;', err);
+                    }
+                )
             })
             this.twitch.listen('broadcast',(target,contentType,body)=>{
                 this.twitch.rig.log(`New PubSub message!\n${target}\n${contentType}\n${body}`)
@@ -81,6 +94,7 @@ export default class App extends React.Component{
             this.twitch.onContext((context,delta)=>{
                 this.contextUpdate(context,delta)
             })
+            
         }
     }
 

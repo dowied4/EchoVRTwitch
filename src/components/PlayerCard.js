@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Card, Segment, Grid } from 'semantic-ui-react'
-import background from './img/echo-arena-with-logo.jpg'
 
 class PlayerCard extends Component {
     constructor(props) {
@@ -12,7 +11,6 @@ class PlayerCard extends Component {
     }
 
     componentDidMount(){
-        console.log(background)
         if (this.props.player && this.props.mouseInfo){
             var playerMod = this.props.player
             playerMod.stats.possession_time = (Math.round(this.props.player.stats.possession_time *10)/10).toFixed(1)

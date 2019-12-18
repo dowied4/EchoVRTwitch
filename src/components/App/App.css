@@ -40,7 +40,7 @@ body {
 }
 
 .grid-background-blue{
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/echovrconnect-6b9cb.appspot.com/o/stream_buddy_images%2Fechoarena_render_character_04_wide.jpg?alt=media") !important;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/echovrconnect-6b9cb.appspot.com/o/stream_buddy_images%2Fblue-background.png?alt=media") !important;
     background-position: -250px -50px !important; 
     background-size: 1000px !important;
     background-repeat: no-repeat !important;
@@ -48,7 +48,7 @@ body {
 }
 
 .grid-background-orange{
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/echovrconnect-6b9cb.appspot.com/o/stream_buddy_images%2Fechoarena_render_character_10.jpg?alt=media") !important;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/echovrconnect-6b9cb.appspot.com/o/stream_buddy_images%2Fred_background.png?alt=media") !important;
     background-position: -175px 0px !important; 
     background-size: 1000px !important;
     background-repeat: no-repeat !important;
