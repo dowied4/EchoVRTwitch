@@ -79,13 +79,25 @@ class PlayerCard extends Component {
     }
 
     render() {
-        let topOff
+        let topOff,topOffScaled, orangeStyle, blueStyle
         if(this.state.loaded){
-           topOff = this.props.top ? this.state.mouse.mouseY + 25 : this.state.mouse.mouseY - 475
+            topOff = this.props.top ? 25 : -475
+            topOffScaled = this.props.top ? -70 : -300
+            orangeStyle = {background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX + 20, top: this.state.mouse.mouseY + topOff,width: 325,  zIndex: 10}
+            blueStyle = {background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX - 345, top: this.state.mouse.mouseY + topOff,width: 325, zIndex: 10}
+            if (this.props.small) {
+                orangeStyle.transform = "scale(0.6)"
+                orangeStyle.left = this.state.mouse.mouseX - 50
+                orangeStyle.top = this.state.mouse.mouseY + topOffScaled
+                blueStyle.transform = "scale(0.6)"
+                blueStyle.top = this.state.mouse.mouseY + topOffScaled
+                blueStyle.left = this.state.mouse.mouseX - 280
+                
+            }
         }
         if (this.state.loaded && this.state.isOrange){
             return (
-                   <Card raised size="large" className="grid-background-orange" style={{background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX + 20, top: topOff,width: 325,  zIndex: 10}} >
+                   <Card raised size="large" className="grid-background-orange" style={orangeStyle} >
                        <Card.Content>
                         {this.buildStats("orange")}
                    </Card.Content>
@@ -93,7 +105,7 @@ class PlayerCard extends Component {
          );
         } else if (this.state.loaded && !this.state.isOrange){
             return (
-                <Card raised size="large" className="grid-background-blue" style={{background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX - 345, top: topOff,width: 325, zIndex: 10}}>
+                <Card raised size="large" className="grid-background-blue" style={blueStyle}>
                     <Card.Content>
                         {this.buildStats("blue")}
                     </Card.Content>

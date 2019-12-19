@@ -1,7 +1,7 @@
 import React from 'react'
 import Authentication from '../../util/Authentication/Authentication'
 import Axios from 'axios';
-import { Grid, Button, Dimmer, Icon, Sidebar, Menu, Header, Segment, StepTitle } from 'semantic-ui-react';
+import { Grid, Button, Dimmer, Icon, Sidebar, Menu, Header, Segment, StepTitle, Responsive } from 'semantic-ui-react';
 
 import './App.css'
 import '../font.css'
@@ -65,10 +65,8 @@ export default class App extends React.Component{
                         return {finishedLoading:true}
                     })
                 }
-                console.log(auth)
                 Axios.get("https://us-central1-echovrconnect-6b9cb.cloudfunctions.net/getMatchData", {headers: {'Twitch-ID': auth.channelId}})
                 .then((match) => {
-                    console.log(match)
                     this.setState({
                         matchData: match.data.match
                     })
@@ -108,6 +106,13 @@ export default class App extends React.Component{
     renderBounds(){
         return(
             <div className={this.state.theme === 'light' ? 'App-light' : 'App-dark'} >
+                <div className="exit-div"
+                onMouseEnter={() => this.setState({
+                    renderBlue: false,
+                    renderOrange: false,
+                    renderScore: false
+                })}
+                />
                 <div className="row">
                     <div className="exit"
                         onMouseEnter={() => this.setState({
@@ -163,9 +168,20 @@ export default class App extends React.Component{
                 return (
                     <div className="App-top">
                         {this.renderBounds()}
-                        {this.state.renderScore ? <Scoreboard matchData={this.state.matchData}/> : null}
-                        {this.state.renderOrange? <TeamBox top={true} mouseLeave={() => {this.setState({renderOrange: false})}} teamData={this.state.matchData.teams[1]} teamIndex={1}/> : null}
-                        {this.state.renderBlue ? <TeamBox top={true} mouseLeave={() => {this.setState({renderBlue: false})}} teamData={this.state.matchData.teams[0]} teamIndex={0}/> : null}
+                        <Responsive maxWidth={1200}>
+                            <div className="scale-down">
+                                {this.state.renderScore ? <Scoreboard matchData={this.state.matchData}/> : null}
+                            </div>
+                            {this.state.renderOrange? <TeamBox small={true} top={true} mouseLeave={() => {this.setState({renderOrange: false})}} teamData={this.state.matchData.teams[1]} teamIndex={1}/> : null}
+                            {this.state.renderBlue ? <TeamBox small={true} top={true} mouseLeave={() => {this.setState({renderBlue: false})}} teamData={this.state.matchData.teams[0]} teamIndex={0}/> : null}
+                        </Responsive>
+                        <Responsive minWidth={1200}>
+                            {this.state.renderScore ? <Scoreboard matchData={this.state.matchData}/> : null}
+                            {this.state.renderOrange? <TeamBox top={true} mouseLeave={() => {this.setState({renderOrange: false})}} teamData={this.state.matchData.teams[1]} teamIndex={1}/> : null}
+                            {this.state.renderBlue ? <TeamBox top={true} mouseLeave={() => {this.setState({renderBlue: false})}} teamData={this.state.matchData.teams[0]} teamIndex={0}/> : null}
+                        </Responsive>
+                        
+                            
                     </div>
                 )
             } else {

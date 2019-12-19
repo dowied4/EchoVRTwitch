@@ -72,17 +72,18 @@ body {
 }
 .exit-div{
     width: 100%;
-    height: 10px;
+    height: 5px;
     margin: auto
 }
 .exit{
-    height:75px;
+    height:30px;
     display: inline-block;
     width: 25%;
 }
 .orange-team{
+    background: orange;
     width:  12.5%;
-    height: 75px;
+    height: 30px;
     display: inline-block;
 }
 
@@ -99,9 +100,14 @@ body {
     text-align: left;
 }
 .scoreboard{
-    height: 75px;
+    background: white;
+    height: 30px;
     width: 25%;
     display: inline-block;
+}
+
+.scale-down{
+    transform: scale(0.8);
 }
 .team-tag{
     text-align: left;
@@ -110,7 +116,8 @@ body {
     padding-bottom: 10px;
 }
 .blue-team{
+    background: blue;
     width: 12.5%;
-    height: 75px;
+    height: 30px;
     display: inline-block;
 }
