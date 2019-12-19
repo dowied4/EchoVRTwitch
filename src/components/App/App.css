@@ -81,7 +81,6 @@ body {
     width: 25%;
 }
 .orange-team{
-    background: orange;
     width:  12.5%;
     height: 30px;
     display: inline-block;
@@ -100,7 +99,6 @@ body {
     text-align: left;
 }
 .scoreboard{
-    background: white;
     height: 30px;
     width: 25%;
     display: inline-block;
@@ -116,7 +114,6 @@ body {
     padding-bottom: 10px;
 }
 .blue-team{
-    background: blue;
     width: 12.5%;
     height: 30px;
     display: inline-block;
