@@ -27,19 +27,24 @@ class TeamBox extends Component {
 				<div>Loading...</div>
 			)
 		} else if (this.props.teamIndex === 1) {
+			let style= {marginBottom: "8px", textAlign: "center"}
+			if (this.props.small) {
+				style.transform = "scale(0.8)"
+				style.transformOrigin = "right top"
+			}
 			return (
-				<Grid style={{position: "relative", paddingTop: 5, zIndex:0}}>
+				<Grid style={{position: "relative", paddingTop: 5, zIndex:0, paddingTop: "3vh"}}>
 					{this.state.renderPlayer ? <PlayerCard small={this.props.small} top={this.props.top} player={this.state.playerInfo} team={this.props.teamData} isOrange={true} mouseInfo={this.state.mouse}/> : null}
 					<div
 						onMouseLeave={() => this.props.mouseLeave()}
 						size="mini"
-						style={{width:"15%",marginBottom: "10px",marginTop: "10px", marginLeft: "22%", position: "relative"}}
+						style={{width:"20%",marginBottom: "10px",marginTop: "10px", marginLeft: "19%", position: "relative"}}
 					>
 						{this.props.teamData.players.map((player, index) => {
 						return(
-							<Card key={index} style={{marginBottom: "5px", textAlign: "center"}}>
+							<Card key={index} style={style}>
 								<PlayerLabel
-									color={"orange"}
+									color="orange"
 									player={player}
 									key={index}
 									onMouseMove={(e) => {this.setState({mouse:{mouseX: e.pageX, mouseY: e.pageY}})}}
@@ -53,16 +58,21 @@ class TeamBox extends Component {
 				</Grid>
 			);
 		} else {
+			let style= {marginBottom: "5px", textAlign: "center"}
+			if (this.props.small) {
+				style.transform = "scale(0.8)"
+				style.transformOrigin = "left top"
+			}
 			return (
-				<Grid style={{position: "relative",paddingTop: 5, zIndex:0}}>
+				<Grid style={{position: "relative",paddingTop: 5, zIndex:0, paddingTop: "3vh"}}>
 					{this.state.renderPlayer ? <PlayerCard small={this.props.small} top={this.props.top} player={this.state.playerInfo} team={this.props.teamData} isOrange={false} mouseInfo={this.state.mouse}/> : null}
 					<div
 						onMouseLeave={() => this.props.mouseLeave()}
 						size="mini"
-						style={{width: "15%", marginBottom: "10px", marginTop: "10px", marginLeft: "63%", position: "relative"}}
+						style={{width: "20%", marginBottom: "10px", marginTop: "10px", marginLeft: "62%", position: "relative"}}
 					>
 						{this.props.teamData.players.map((player, index) => (
-							<Card key={index} style={{marginBottom: "5px", textAlign: "center"}}>
+							<Card key={index} style={style}>
 								<PlayerLabel
 									color="blue"
 									player={player}

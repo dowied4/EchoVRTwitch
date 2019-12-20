@@ -83,15 +83,15 @@ class PlayerCard extends Component {
         if(this.state.loaded){
             topOff = this.props.top ? 25 : -475
             topOffScaled = this.props.top ? -70 : -300
-            orangeStyle = {background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX + 20, top: this.state.mouse.mouseY + topOff,width: 325,  zIndex: 10}
-            blueStyle = {background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX - 345, top: this.state.mouse.mouseY + topOff,width: 325, zIndex: 10}
+            orangeStyle = {background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX + 20, top: this.state.mouse.mouseY + topOff,minWidth: 360,  zIndex: 10}
+            blueStyle = {background: "#283131",color: "white", fontSize: "large", position: 'fixed', left: this.state.mouse.mouseX - 380, top: this.state.mouse.mouseY + topOff,minWidth: 360, zIndex: 10}
             if (this.props.small) {
                 orangeStyle.transform = "scale(0.6)"
                 orangeStyle.left = this.state.mouse.mouseX - 50
                 orangeStyle.top = this.state.mouse.mouseY + topOffScaled
                 blueStyle.transform = "scale(0.6)"
                 blueStyle.top = this.state.mouse.mouseY + topOffScaled
-                blueStyle.left = this.state.mouse.mouseX - 280
+                blueStyle.left = this.state.mouse.mouseX - 305
                 
             }
         }

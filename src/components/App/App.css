@@ -76,13 +76,13 @@ body {
     margin: auto
 }
 .exit{
-    height:30px;
+    height:8vh;
     display: inline-block;
     width: 25%;
 }
 .orange-team{
     width:  12.5%;
-    height: 30px;
+    height: 8vh;
     display: inline-block;
 }
 
@@ -99,13 +99,14 @@ body {
     text-align: left;
 }
 .scoreboard{
-    height: 30px;
+    height: 8vh;
     width: 25%;
     display: inline-block;
 }
 
 .scale-down{
-    transform: scale(0.8);
+    transform-origin: center top;
+    transform: scale(0.75);
 }
 .team-tag{
     text-align: left;
@@ -115,6 +116,6 @@ body {
 }
 .blue-team{
     width: 12.5%;
-    height: 30px;
+    height: 8vh;
     display: inline-block;
 }
