@@ -180,8 +180,6 @@ export default class App extends React.Component{
                             {this.state.renderOrange? <TeamBox top={true} mouseLeave={() => {this.setState({renderOrange: false})}} teamData={this.state.matchData.teams[1]} teamIndex={1}/> : null}
                             {this.state.renderBlue ? <TeamBox top={true} mouseLeave={() => {this.setState({renderBlue: false})}} teamData={this.state.matchData.teams[0]} teamIndex={0}/> : null}
                         </Responsive>
-                        
-                            
                     </div>
                 )
             } else {

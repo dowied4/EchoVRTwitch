@@ -27,7 +27,7 @@ class TeamBox extends Component {
 				<div>Loading...</div>
 			)
 		} else if (this.props.teamIndex === 1) {
-			let style= {marginBottom: "8px", textAlign: "center"}
+			let style= {marginBottom: "5px", textAlign: "center", float: "right"}
 			if (this.props.small) {
 				style.transform = "scale(0.8)"
 				style.transformOrigin = "right top"
@@ -38,14 +38,16 @@ class TeamBox extends Component {
 					<div
 						onMouseLeave={() => this.props.mouseLeave()}
 						size="mini"
-						style={{width:"20%",marginBottom: "10px",marginTop: "10px", marginLeft: "19%", position: "relative"}}
+						style={{width:"20%",marginBottom: "10px",marginTop: "10px", left: "20vw", position: "absolute", textAlign: "right"}}
 					>
 						{this.props.teamData.players.map((player, index) => {
+							console.log(style)
 						return(
 							<Card key={index} style={style}>
 								<PlayerLabel
 									color="orange"
 									player={player}
+									style={{right:0, position: "absolute"}}
 									key={index}
 									onMouseMove={(e) => {this.setState({mouse:{mouseX: e.pageX, mouseY: e.pageY}})}}
 									onMouseEnter={(player, e) => {this.setState({renderPlayer: true, playerInfo: player, mouse: {mouseX: e.pageX, mouseY: e.pageY}})}}
@@ -69,7 +71,7 @@ class TeamBox extends Component {
 					<div
 						onMouseLeave={() => this.props.mouseLeave()}
 						size="mini"
-						style={{width: "20%", marginBottom: "10px", marginTop: "10px", marginLeft: "62%", position: "relative"}}
+						style={{width: "20%", marginBottom: "10px", marginTop: "10px", left:"110vh", position: "absolute"}}
 					>
 						{this.props.teamData.players.map((player, index) => (
 							<Card key={index} style={style}>
